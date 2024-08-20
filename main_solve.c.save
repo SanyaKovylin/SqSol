@@ -10,7 +10,7 @@ enum cases {TOXIC = -100, INFINITE = 100};
 
 ///Main logic functions
 void input(double *a_coef,double *b_coef, double *c_coef);
-int get_input(double *coef, char letter);
+void get_input(double *coef, char letter);
 int Solve(double a_coef,double b_coef, double c_coef, double *sol1, double *sol2);
 int check_input(double a_coef,double b_coef, double c_coef);
 int square_solve(double a_coef,double b_coef, double c_coef, double *sol1, double *sol2);
@@ -37,21 +37,24 @@ int main(void)
 
 
 void input(double *a_coef,double *b_coef, double *c_coef){
-    int check_sum = 0;
-    check_sum = get_input(a_coef,b_coef,c_coef);
-    while (check_sum < 3){
-        getchar(); //buf clean
-        printf("Your last input contains Type Errors, please, give coefficients in float type\n %d\n", check_sum);
-        check_sum = get_input(a_coef,b_coef,c_coef);
-    }
+    printf("Please, enter the coefficients of your equation of the form a*x^2 + b*x + c = 0\n");
+    get_input(a_coef, 'a');
+    get_input(b_coef, 'b');
+    get_input(c_coef, 'c');
+
 
 }
 
 
 
-int get_input(double *coef, char letter){
-    while (!scanf("%lf", coef))
-        printf("Your input has wrong type, please, reenter coefficient");
+void get_input(double *coef, char letter){
+    printf("%c: ", letter);
+    while (!scanf("%lf", coef)){
+        printf("Your input has wrong type, please, reenter coefficient %c\n", letter);
+        printf("%c: ", letter);
+        while(getchar() != '\n')  // buffer clean
+              ;
+        }
 }
 
 
@@ -60,7 +63,7 @@ int Solve(double a_coef,double b_coef, double c_coef, double *sol1, double *sol2
     assert(isfinite(a_coef));
     assert(isfinite(b_coef));
     assert(isfinite(c_coef));
-    
+
 
     assert(sol1 != NULL);
     assert(sol2 != NULL);
@@ -86,14 +89,14 @@ int square_solve(double a_coef,double b_coef, double c_coef, double *sol1, doubl
     assert(isfinite(a_coef));
     assert(isfinite(b_coef));
     assert(isfinite(c_coef));
-    assert(compare(a_coef));
+    assert(!compare(a_coef));
 
     assert(sol1 != NULL);
     assert(sol2 != NULL);
     assert(sol1 != sol2);
 
 
-    double discr = 0, sqrt_dis = 0;  // The discriminant of equation and its square root
+    double discr = 0;  // The discriminant of equation and its square root
     double inv_a_coefx2 = 1/(a_coef*2); // Due to inevitability of computation we take it once
 
 
@@ -125,7 +128,9 @@ int linear_solve(double b_coef, double c_coef, double *sol1) {
     assert(isfinite(b_coef));
     assert(isfinite(c_coef));
 
-    assert(sol1 != 0);
+    assert(!compare(b_coef));
+
+    assert(sol1 != NULL);
 
 
     *sol1 = -c_coef/b_coef;
@@ -176,7 +181,7 @@ bool compare(double dble){
     assert(isfinite(dble));
 
     const double EPS = 0.000001;
-    return EPS < fabs(dble);
+    return EPS > fabs(dble);
 }
 
 
