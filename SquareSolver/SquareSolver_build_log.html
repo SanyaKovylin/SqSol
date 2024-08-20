@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>SquareSolver build log</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+<body>
+<tt>
+Build started on: <u>20-08-2024 at 18:35.08</u><br />
+Build ended on: <u>20-08-2024 at 18:35.08</u><p />
+<b>-------------- Build: Debug in SquareSolver (compiler: Use it for projects       = MinGW GCC + Strict)---------------</b><br />
+gcc.exe  -c C:\Users\sanya\OneDrive\Documents\GitHub\SqSol\SquareSolver\main_solve.c -o obj\Debug\main_solve.o -Wall  -g  -Wall -Wextra -Weffc++ -Wcast-align -Wcast-qual -Wconversion -Wctor-dtor-privacy -Wempty-body -Wfloat-equal -Wformat-security -Wformat=2 -Wignored-qualifiers -Winit-self -Winline -Wlogical-op -Wmain -Wmissing-declarations -Wno-missing-field-initializers -Wmissing-include-dirs -Wnon-virtual-dtor -Woverloaded-virtual -Wpointer-arith -Wredundant-decls -Wshadow -Wsign-promo -Wstack-usage=8192 -Wstrict-aliasing -Wstrict-null-sentinel -Wswitch-default -Wswitch-enum -Wtype-limits -Wundef -Wunreachable-code -Wwrite-strings -g -fexceptions -pipe -D_DEBUG -D_EJUDGE_CLIENT_SIDE -D_EJC<br />
+<font color="#0000ff">cc1.exe: warning: command line option '-Weffc++' is valid for C++/ObjC++ but not for C [enabled by default]</font><br />
+<font color="#0000ff">cc1.exe: warning: command line option '-Wctor-dtor-privacy' is valid for C++/ObjC++ but not for C [enabled by default]</font><br />
+<font color="#0000ff">cc1.exe: warning: command line option '-Wnon-virtual-dtor' is valid for C++/ObjC++ but not for C [enabled by default]</font><br />
+<font color="#0000ff">cc1.exe: warning: command line option '-Woverloaded-virtual' is valid for C++/ObjC++ but not for C [enabled by default]</font><br />
+<font color="#0000ff">cc1.exe: warning: command line option '-Wsign-promo' is valid for C++/ObjC++ but not for C [enabled by default]</font><br />
+<font color="#0000ff">cc1.exe: warning: command line option '-Wstrict-null-sentinel' is valid for C++/ObjC++ but not for C [enabled by default]</font><br />
+C:\Users\sanya\OneDrive\Documents\GitHub\SqSol\SquareSolver\main_solve.c: In function 'tester':<br />
+<font color="#0000ff">C:\Users\sanya\OneDrive\Documents\GitHub\SqSol\SquareSolver\main_solve.c:28:5: warning: missing braces around initializer [-Wmissing-braces]</font><br />
+     0,0,0,100,0,0,<br />
+     ^<br />
+<font color="#0000ff">C:\Users\sanya\OneDrive\Documents\GitHub\SqSol\SquareSolver\main_solve.c:28:5: warning: (near initialization for 'tests[0]') [-Wmissing-braces]</font><br />
+<font color="#0000ff">C:\Users\sanya\OneDrive\Documents\GitHub\SqSol\SquareSolver\main_solve.c:42:9: warning: passing argument 4 of 'Solve' from incompatible pointer type [enabled by default]</font><br />
+         t_nroots = Solve(tests[i].a, tests[i].b, tests[i].c, &amp;t_x1, &amp;t_x2);<br />
+         ^<br />
+In file included from C:\Users\sanya\OneDrive\Documents\GitHub\SqSol\SquareSolver\main_solve.c:4:0:<br />
+C:\Users\sanya\OneDrive\Documents\GitHub\SqSol\SquareSolver\sq_sol.h:6:5: note: expected 'double *' but argument is of type 'int *'<br />
+ int Solve(double a_coef,double b_coef, double c_coef, double *sol1, double *sol2);<br />
+     ^<br />
+<font color="#0000ff">C:\Users\sanya\OneDrive\Documents\GitHub\SqSol\SquareSolver\main_solve.c:42:9: warning: passing argument 5 of 'Solve' from incompatible pointer type [enabled by default]</font><br />
+         t_nroots = Solve(tests[i].a, tests[i].b, tests[i].c, &amp;t_x1, &amp;t_x2);<br />
+         ^<br />
+In file included from C:\Users\sanya\OneDrive\Documents\GitHub\SqSol\SquareSolver\main_solve.c:4:0:<br />
+C:\Users\sanya\OneDrive\Documents\GitHub\SqSol\SquareSolver\sq_sol.h:6:5: note: expected 'double *' but argument is of type 'int *'<br />
+ int Solve(double a_coef,double b_coef, double c_coef, double *sol1, double *sol2);<br />
+     ^<br />
+<font color="#0000ff">C:\Users\sanya\OneDrive\Documents\GitHub\SqSol\SquareSolver\main_solve.c:43:9: warning: implicit declaration of function 'compare2' [-Wimplicit-function-declaration]</font><br />
+         if ((compare2(tests[i].sol1, t_x1) &amp;&amp; compare2(tests[i].sol2, t_x2)<br />
+         ^<br />
+<font color="#0000ff">C:\Users\sanya\OneDrive\Documents\GitHub\SqSol\SquareSolver\main_solve.c:50:1: warning: control reaches end of non-void function [-Wreturn-type]</font><br />
+ }<br />
+ ^<br />
+g++.exe  -o bin\Debug\SquareSolver.exe obj\Debug\for_solve.o obj\Debug\main_solve.o obj\Debug\test.o<br />
+Output size is 184.73 KB<br />
+<font color="#0000ff">Process terminated with status 0 (0 minutes, 0 seconds)</font><br />
+<font color="#0000ff">0 errors, 12 warnings (0 minutes, 0 seconds)</font><br />
+</tt>
+</body>
+</html>
