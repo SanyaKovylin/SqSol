@@ -1,56 +1,81 @@
 #include <stdio.h>
 #include <math.h>
+#include <assert.h>
 
-
-// equation of the form a*x^2 + b*x + c = 0
+/// equation of the form a*x^2 + b*x + c = 0
 
 enum cases {TOXIC = -100, INFINITE = 100};
 
 
-void get_input(float *a_coef,float *b_coef, float *c_coef);
-int Solve(float a_coef,float b_coef, float c_coef, float *sol1, float *sol2);
-int check_input(float a_coef,float b_coef, float c_coef);
-int square_solve(float a_coef,float b_coef, float c_coef, float *sol1, float *sol2);
-int linear_solve(float b_coef, float c_coef, float* sol1);
-int special_case(float c_coef);
-int output(float sol1,float sol2, int num_roots);
+
+///Main logic functions
+void input(double *a_coef,double *b_coef, double *c_coef);
+void get_input(double *coef, char letter);
+int Solve(double a_coef,double b_coef, double c_coef, double *sol1, double *sol2);
+int check_input(double a_coef,double b_coef, double c_coef);
+int square_solve(double a_coef,double b_coef, double c_coef, double *sol1, double *sol2);
+int linear_solve(double b_coef, double c_coef, double* sol1);
+int special_case(double c_coef);
+int output(double sol1,double sol2, int num_roots);
+
+///Additional function
+bool compare(double dble); // == 0 for double
 
 
 
 
 int main(void)
 {
-    float a_coef = 0, b_coef = 0, c_coef = 0;  // coefficients of the equation
-    get_input(&a_coef, &b_coef, &c_coef);
+    double a_coef = 0, b_coef = 0, c_coef = 0;  // coefficients of the equation
+    input(&a_coef, &b_coef, &c_coef);
 
-    float sol1 = 0, sol2 = 0;
+    double sol1 = 0, sol2 = 0;
     int num_roots = Solve(a_coef, b_coef, c_coef , &sol1, &sol2);
     return output(sol1, sol2, num_roots);
 
 }
 
 
+void input(double *a_coef,double *b_coef, double *c_coef){
+    printf("Please, enter the coefficients of your equation of the form a*x^2 + b*x + c = 0\n");
+    get_input(a_coef, 'a');
+    get_input(b_coef, 'b');
+    get_input(c_coef, 'c');
 
 
-void get_input(float *a_coef,float *b_coef, float *c_coef){
-
-    printf("Please, enter the coefficients of your equation of the form a*x^2 + b*x + c = 0 \n");
-    printf("a: ");
-    scanf("%f", &(*a_coef));
-    printf("b: ");
-    scanf("%f", &(*b_coef));
-    printf("c: ");
-    scanf("%f", &(*c_coef));
 }
 
 
 
-int Solve(float a_coef,float b_coef, float c_coef, float *sol1, float *sol2){
+void get_input(double *coef, char letter){
+    printf("%c: ", letter);
+    while (!scanf("%lf", coef)){
+        printf("Your input has wrong type, please, reenter coefficient %c\n", letter);
+        printf("%c: ", letter);
+        while(getchar() != '\n')  // buffer clean
+              ;
+        }
+}
+
+
+
+int Solve(double a_coef,double b_coef, double c_coef, double *sol1, double *sol2){
+    assert(isfinite(a_coef));
+    assert(isfinite(b_coef));
+    assert(isfinite(c_coef));
+
+
+    assert(sol1 != NULL);
+    assert(sol2 != NULL);
+    assert(sol1 != sol2);
+
     int num_roots = TOXIC;
-    if (a_coef == 0)
-        linear_solve(b_coef,c_coef,sol1);
-    else if (b_coef == 0)
-        special_case(c_coef);
+    if (compare(a_coef)) {
+        if (compare(b_coef))
+            num_roots = special_case(c_coef);
+        else
+            num_roots = linear_solve(b_coef,c_coef,sol1);
+        }
     else
         num_roots = square_solve(a_coef, b_coef, c_coef, sol1, sol2);
 
@@ -59,27 +84,39 @@ int Solve(float a_coef,float b_coef, float c_coef, float *sol1, float *sol2){
 
 
 
-int square_solve(float a_coef,float b_coef, float c_coef, float *sol1, float *sol2)
+int square_solve(double a_coef,double b_coef, double c_coef, double *sol1, double *sol2)
 {
-    float discr = 0, sqrt_dis = 0;  // The discriminant of equation and its square root
-    float a_coefx2 = a_coef*2; // Due to inevitability of computation we take it once
+    assert(isfinite(a_coef));
+    assert(isfinite(b_coef));
+    assert(isfinite(c_coef));
+    assert(!compare(a_coef));
+
+    assert(sol1 != NULL);
+    assert(sol2 != NULL);
+    assert(sol1 != sol2);
+
+
+    double discr = 0;  // The discriminant of equation and its square root
+    double inv_a_coefx2 = 1/(a_coef*2); // Due to inevitability of computation we take it once
 
 
     discr = b_coef * b_coef - 4*a_coef*c_coef;// compute the discriminant of equation
 
 
-    if (discr == 0){
-        *sol1 = -b_coef/a_coefx2;
+    if (compare(discr)){
+        *sol1 = -b_coef*inv_a_coefx2;
+        *sol2 = *sol1;
         return 1;
     }
     else if (discr > 0){
-        *sol1 = (-b_coef + sqrt_dis) / a_coefx2;
-        *sol2 = (-b_coef - sqrt_dis) / a_coefx2;
+        discr = sqrt(discr);
+        *sol1 = (-b_coef + discr)*inv_a_coefx2;
+        *sol2 = (-b_coef - discr)*inv_a_coefx2;
         return 2;
     }
     else{
         //Complex case
-        return -1;
+        return 0;
     }
 
 }
@@ -87,23 +124,36 @@ int square_solve(float a_coef,float b_coef, float c_coef, float *sol1, float *so
 
 
 
-int linear_solve(float b_coef, float c_coef, float *sol1) {
+int linear_solve(double b_coef, double c_coef, double *sol1) {
+    assert(isfinite(b_coef));
+    assert(isfinite(c_coef));
 
-    *sol1 = -b_coef/c_coef;
+    assert(!compare(b_coef));
+
+    assert(sol1 != NULL);
+
+
+    *sol1 = -c_coef/b_coef;
     return 1;
 }
 
 
-int special_case(float c_coef){
+int special_case(double c_coef){
+    assert(isfinite(c_coef));
 
-    if (c_coef == 0)
+
+    if (compare(c_coef))
         return INFINITE;
     return 0;
 
 }
 
 
-int output(float sol1, float sol2, int num_roots){
+int output(double sol1, double sol2, int num_roots){
+    assert(isfinite(sol1));
+    assert(isfinite(sol2));
+
+
     switch (num_roots){
 
     case 1 : {printf("Your equation has only one root: %g", sol1);
@@ -116,11 +166,24 @@ int output(float sol1, float sol2, int num_roots){
             return 1;
 
         return 1;}
+    case 0 : {printf("Your equation has no roots");
+        return 0;}
+
+    case INFINITE : {printf("Your equation has INFINITE roots");
+        return 0;}
+
     default : return 2;
     }
-
-
 }
+
+
+bool compare(double dble){
+    assert(isfinite(dble));
+
+    const double EPS = 0.000001;
+    return EPS > fabs(dble);
+}
+
 
 
 
