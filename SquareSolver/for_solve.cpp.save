@@ -4,7 +4,7 @@
 #include "sq_sol.h"
 
 
-enum cases {TOXIC = -100, INFINITE = 100};
+
 
 ///Main logic functions
 
@@ -33,7 +33,8 @@ void get_input (double *coef, char letter){
 
     printf ("%c: ", letter);
 
-    while (!scanf ("%lf", coef)){
+    int flag;
+    while ((flag = scanf ("%lf", coef)) != EOF  !flag){
 
         printf ("Your input has wrong type, please, reenter coefficient %c\n", letter);
         printf ("%c: ", letter);
@@ -56,7 +57,7 @@ int Solve(double a_coef,double b_coef, double c_coef, double *sol1, double *sol2
     assert (sol1 != sol2);
 
     int num_roots = TOXIC;
-    printf("%g %g \n", *sol1, *sol2);
+
     if (compare (a_coef)) {
 
         if (compare (b_coef)){
@@ -80,7 +81,7 @@ int Solve(double a_coef,double b_coef, double c_coef, double *sol1, double *sol2
 
 //-----------------------------------------------------------------------------
 
-int square_solve(double a_coef,double b_coef, double c_coef, double *sol1, double *sol2){
+int square_solve(double a_coef, double b_coef, double c_coef, double *sol1, double *sol2){
 
     assert (isfinite (a_coef));
     assert (isfinite (b_coef));
@@ -95,7 +96,7 @@ int square_solve(double a_coef,double b_coef, double c_coef, double *sol1, doubl
     double inv_a_coefx2 = 1 / (a_coef * 2); // Due to inevitability of computation we take it once
 
     discr = b_coef * b_coef - 4 * a_coef * c_coef;// compute the discriminant of equation
-    
+
     if (compare (discr)){
 
         *sol1 = -b_coef * inv_a_coefx2;
@@ -191,12 +192,11 @@ int output(double sol1, double sol2, int num_roots){
 }
 
 //-----------------------------------------------------------------------------
-
+const double EPS = 0.000000000001;
 int compare (double dble){
 
     assert (isfinite(dble));
 
-    const double EPS = 0.000001;
     return EPS > fabs (dble);
 }
 
@@ -207,7 +207,6 @@ int compare2(double dble1, double dble2){
     assert (isfinite (dble1));
     assert (isfinite (dble2));
 
-    const double EPS = 0.000001;
     return EPS > fabs (dble1 - dble2);
 }
 

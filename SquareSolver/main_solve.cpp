@@ -3,8 +3,6 @@
 #include <assert.h>
 #include "sq_sol.h"
 
-enum cases {TOXIC = -100, INFINITE = 100};
-
 /// equation of the form a*x^2 + b*x + c = 0
 int tester (void);
 
@@ -17,6 +15,7 @@ int main (void)
 
     double sol1 = 0, sol2 = 0;
     int num_roots = Solve (a_coef, b_coef, c_coef , &sol1, &sol2);
+
     return output (sol1, sol2, num_roots);
 }
 
@@ -25,6 +24,7 @@ int main (void)
 int tester(void){
 
     struct test {
+
         double a;
         double b;
         double c;
@@ -34,27 +34,29 @@ int tester(void){
     };
 
     struct test tests[] = {
-        0,0,0,INFINITE,0,0,
-        0,1,0,1,0,0,
-        0,0,1,0,0,0,
-        0,1,1,1,-1,-1,
-        1,0,0,1,0,0,
-        1,0,1,0,0,0,
-        1,1,0,2,0,-1,
-        1,1,1,0,0,0
+
+        0, 0, 0, INFINITE,  0,  0,
+        0, 1, 0,        1,  0,  0,
+        0, 0, 1,        0,  0,  0,
+        0, 1, 1,        1, -1, -1,
+        1, 0, 0,        1,  0,  0,
+        1, 0, 1,        0,  0,  0,
+        1, 1, 0,        2,  0, -1,
+        1, 1, 1,        0,  0,  0,
     };
 
     int t_nroots = TOXIC;
     double t1 = TOXIC, t2 = TOXIC;
 
-    for (int i = 0; i < sizeof (tests) % sizeof (test); i++){
+    for (int i = 0; i < sizeof (tests) / sizeof (tests[0]); i++){
 
         t_nroots = Solve(tests[i].a, tests[i].b, tests[i].c, &t1, &t2);
 
-        if ((compare2 (tests[i].sol1, t1) && compare2 (tests[i].sol2, t2)
-                                                    && tests[i].nroots == t_nroots) == 0) {
+        if ((compare2 (tests[i].sol1, t1) &&
+             compare2 (tests[i].sol2, t2) &&
+             tests[i].nroots == t_nroots) == false) {
 
-            printf ("Test Error Test_id: %d \n",i);
+            printf ("Test Error Test_id: %d \n", i);
 
             return 0;
         }

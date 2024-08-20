@@ -4,7 +4,7 @@
 #include "sq_sol.h"
 
 
-enum cases {TOXIC = -100, INFINITE = 100};
+
 
 ///Main logic functions
 
@@ -17,7 +17,7 @@ int special_case (double c_coef);
 ///Additional function
 
 int compare (double dble); // == 0 for double
-int compare2 (double dble1, double dble2); // == for double
+
 
 
 void input(double *a_coef, double *b_coef, double *c_coef){
@@ -33,7 +33,10 @@ void get_input (double *coef, char letter){
 
     printf ("%c: ", letter);
 
-    while (!scanf ("%lf", coef)){
+    int flag;
+    while ((flag = scanf ("%lf", coef)) != EOF || !flag){
+
+        assert (flag == EOF);
 
         printf ("Your input has wrong type, please, reenter coefficient %c\n", letter);
         printf ("%c: ", letter);
@@ -80,7 +83,7 @@ int Solve(double a_coef,double b_coef, double c_coef, double *sol1, double *sol2
 
 //-----------------------------------------------------------------------------
 
-int square_solve(double a_coef,double b_coef, double c_coef, double *sol1, double *sol2){
+int square_solve(double a_coef, double b_coef, double c_coef, double *sol1, double *sol2){
 
     assert (isfinite (a_coef));
     assert (isfinite (b_coef));
@@ -191,12 +194,10 @@ int output(double sol1, double sol2, int num_roots){
 }
 
 //-----------------------------------------------------------------------------
-
+const double EPS = 0.000000000001;
 int compare (double dble){
 
     assert (isfinite(dble));
-
-    const double EPS = 0.000001;
 
     return EPS > fabs (dble);
 }
@@ -207,8 +208,6 @@ int compare2(double dble1, double dble2){
 
     assert (isfinite (dble1));
     assert (isfinite (dble2));
-
-    const double EPS = 0.000001;
 
     return EPS > fabs (dble1 - dble2);
 }

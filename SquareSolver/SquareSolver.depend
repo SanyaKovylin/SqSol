@@ -5,7 +5,7 @@
 	<assert.h>
 	"sq_sol.h"
 
-1724171825 c:\users\sanya\onedrive\documents\github\sqsol\squaresolver\sq_sol.h
+1724175924 c:\users\sanya\onedrive\documents\github\sqsol\squaresolver\sq_sol.h
 
 1724165341 source:c:\users\sanya\onedrive\documents\github\sqsol\squaresolver\test.c
 
@@ -15,13 +15,13 @@
 	<assert.h>
 	"sq_sol.h"
 
-1724172577 source:c:\users\sanya\onedrive\documents\github\sqsol\squaresolver\for_solve.cpp
+1724175939 source:c:\users\sanya\onedrive\documents\github\sqsol\squaresolver\for_solve.cpp
 	<stdio.h>
 	<math.h>
 	<assert.h>
 	"sq_sol.h"
 
-1724172885 source:c:\users\sanya\onedrive\documents\github\sqsol\squaresolver\main_solve.cpp
+1724175924 source:c:\users\sanya\onedrive\documents\github\sqsol\squaresolver\main_solve.cpp
 	<stdio.h>
 	<math.h>
 	<assert.h>
