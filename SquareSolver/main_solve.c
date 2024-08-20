@@ -24,8 +24,17 @@ int main(void)
 
 
 int tester(void){
+    struct test {
+        double a;
+        double b;
+        double c;
+        int nroots;
+        double sol1;
+        double sol2;
+    };
+
     struct test tests[] = {
-    0,0,0,100,0,0,
+    0,0,0,INFINITE,0,0,
     0,1,0,1,0,0,
     0,0,1,0,0,0,
     0,1,1,1,-1,-1,
@@ -36,13 +45,14 @@ int tester(void){
     };
 
 
-    int t_x1 = TOXIC, t_x2 = TOXIC,t_nroots = TOXIC;
+    int t_nroots = TOXIC;
+    float sol1 = TOXIC, sol2 = TOXIC;
     int i;
-    for ( i = 0;i < 10;i++){
-        t_nroots = Solve(tests[i].a, tests[i].b, tests[i].c, &t_x1, &t_x2);
-        if ((compare2(tests[i].sol1, t_x1) && compare2(tests[i].sol2, t_x2)
-                                                    && compare2(tests[i].nroots, t_nroots)) == 0) {
-            printf("Test Error");
+    for (i = 0;i < 10;i++){
+        t_nroots = Solve(tests[i].a, tests[i].b, tests[i].c, &sol1, &sol2);
+        if ((compare2(tests[i].sol1, sol1) && compare2(tests[i].sol2, sol2)
+                                                    && tests[i].nroots== t_nroots) == 0) {
+            printf("Test Error %d \n %g %g %d",i , sol1, sol2, t_nroots);
             return 1;
         }
     }

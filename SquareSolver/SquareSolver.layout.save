@@ -1,40 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="for_solve.c" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3859" topLine="6" />
-		</Cursor>
-		<Folding>
-			<Collapse line="25" />
-			<Collapse line="36" />
-			<Collapse line="38" />
-			<Collapse line="48" />
-			<Collapse line="59" />
-			<Collapse line="74" />
-			<Collapse line="92" />
-			<Collapse line="97" />
-			<Collapse line="103" />
-			<Collapse line="113" />
-			<Collapse line="127" />
-			<Collapse line="138" />
-			<Collapse line="143" />
-			<Collapse line="145" />
-			<Collapse line="148" />
-			<Collapse line="151" />
-			<Collapse line="155" />
-			<Collapse line="158" />
-			<Collapse line="166" />
-		</Folding>
-	</File>
-	<File name="sq_sol.h" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="for_solve.cpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="0" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="main_solve.c" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="main_solve.cpp" open="1" top="1" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="303" topLine="0" />
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="sq_sol.h" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="118" topLine="0" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

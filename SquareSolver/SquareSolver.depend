@@ -1,15 +1,27 @@
 # depslib dependency file v1.0
-1724164512 source:c:\users\sanya\onedrive\documents\github\sqsol\squaresolver\main_solve.c
+1724169446 source:c:\users\sanya\onedrive\documents\github\sqsol\squaresolver\main_solve.c
 	<stdio.h>
 	<math.h>
 	<assert.h>
 	"sq_sol.h"
 
-1724166278 c:\users\sanya\onedrive\documents\github\sqsol\squaresolver\sq_sol.h
+1724171825 c:\users\sanya\onedrive\documents\github\sqsol\squaresolver\sq_sol.h
 
 1724165341 source:c:\users\sanya\onedrive\documents\github\sqsol\squaresolver\test.c
 
-1724168085 source:c:\users\sanya\onedrive\documents\github\sqsol\squaresolver\for_solve.c
+1724169126 source:c:\users\sanya\onedrive\documents\github\sqsol\squaresolver\for_solve.c
+	<stdio.h>
+	<math.h>
+	<assert.h>
+	"sq_sol.h"
+
+1724172577 source:c:\users\sanya\onedrive\documents\github\sqsol\squaresolver\for_solve.cpp
+	<stdio.h>
+	<math.h>
+	<assert.h>
+	"sq_sol.h"
+
+1724172885 source:c:\users\sanya\onedrive\documents\github\sqsol\squaresolver\main_solve.cpp
 	<stdio.h>
 	<math.h>
 	<assert.h>

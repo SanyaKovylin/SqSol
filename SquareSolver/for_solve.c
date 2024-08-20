@@ -59,8 +59,11 @@ int Solve(double a_coef,double b_coef, double c_coef, double *sol1, double *sol2
 
     int num_roots = TOXIC;
     if (compare(a_coef)) {
-        if (compare(b_coef))
+        if (compare(b_coef)){
             num_roots = special_case(c_coef);
+            *sol1 = 0;
+            *sol2 = *sol1;
+            }
         else
             num_roots = linear_solve(b_coef,c_coef,sol1);
         }
@@ -128,9 +131,9 @@ int linear_solve(double b_coef, double c_coef, double *sol1) {
 
 int special_case(double c_coef){
     assert(isfinite(c_coef));
+    printf("E %g",c_coef);
 
-
-    if (compare(c_coef))
+    if (!compare(c_coef))
         return INFINITE;
     return 0;
 

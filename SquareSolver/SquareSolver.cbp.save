@@ -31,18 +31,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="for_solve.c">
-			<Option compilerVar="CC" />
-			<Option target="Debug" />
-		</Unit>
-		<Unit filename="main_solve.c">
-			<Option compilerVar="CC" />
-		</Unit>
+		<Unit filename="for_solve.cpp" />
+		<Unit filename="main_solve.cpp" />
 		<Unit filename="sq_sol.h">
 			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
-		<Unit filename="test.c">
-			<Option compilerVar="CC" />
 		</Unit>
 		<Extensions>
 			<code_completion />
